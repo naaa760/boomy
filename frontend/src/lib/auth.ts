@@ -11,7 +11,16 @@ export const auth = betterAuth({
   },
   trustedOrigins: [
     "http://localhost:3000",
+    "http://localhost:3001",
     "https://boomy-cyc4.vercel.app",
     "https://boomy-cyc4-qiwkuxjpj-nehhs-projects.vercel.app",
   ],
+  pages: {
+    signIn: "/auth/sign-in",
+    signUp: "/auth/sign-up",
+  },
+  redirects: {
+    signIn: "/dashboard",
+    signUp: "/dashboard",
+  },
 });
