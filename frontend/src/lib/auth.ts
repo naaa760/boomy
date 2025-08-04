@@ -23,6 +23,11 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  trustedOrigins: [
+    "http://localhost:3000",
+    "https://boomy-cyc4.vercel.app",
+    "https://boomy-cyc4-qiwkuxjpj-nehhs-projects.vercel.app",
+  ],
   plugins: [
     polar({
       client: polarClient,
