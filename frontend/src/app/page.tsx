@@ -15,7 +15,7 @@ export default function LandingPage() {
         className="min-h-screen bg-black bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/bg.jpg')" }}
       >
-        <div className="mx-auto max-w-7xl px-4 pt-32 pb-0 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 pt-48 pb-0 sm:px-6 lg:px-8">
           <div className="text-center">
             {/* Main Headline */}
             <div className="mb-2 flex items-center justify-center gap-8">
@@ -23,9 +23,9 @@ export default function LandingPage() {
                 className="animate-fade-in text-center text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
                 style={{
                   fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif',
-                  fontSize: "clamp(32px, 5vw, 58px)",
+                  fontSize: "clamp(40px, 6vw, 72px)",
                   letterSpacing: "-0.02em",
-                  lineHeight: "1.2",
+                  lineHeight: "1.1",
                   fontWeight: "300",
                   animation: "fadeInUp 1.2s ease-out forwards",
                 }}
@@ -40,7 +40,7 @@ export default function LandingPage() {
                   The New Standard for
                 </span>
                 <span
-                  className="animate-slide-up mt-4 block bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent"
+                  className="animate-slide-up mt-6 block bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent"
                   style={{
                     animationDelay: "0.4s",
                     animation: "slideUp 0.8s ease-out 0.4s forwards",
@@ -58,15 +58,16 @@ export default function LandingPage() {
                 style={{ animation: "fadeIn 1s ease-out 0.6s forwards" }}
               />
             </div>
+            <br />
 
             {/* Description */}
             <p
               className="animate-fade-in mx-auto mb-2 max-w-3xl text-center text-white/90 drop-shadow-[0_0_5px_rgba(255,255,255,0.2)]"
               style={{
                 fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif',
-                fontSize: "16px",
+                fontSize: "18px",
                 letterSpacing: "0.05em",
-                lineHeight: "22px",
+                lineHeight: "26px",
                 fontWeight: "300",
                 animation: "fadeInUp 1s ease-out 0.8s forwards",
               }}
@@ -74,6 +75,7 @@ export default function LandingPage() {
               Meet the first true end-to-end AI music platform. Generate tracks,
               create playlists, collaborate with artists, and more.
             </p>
+            <br />
 
             {/* Call-to-Action Buttons */}
             <div
