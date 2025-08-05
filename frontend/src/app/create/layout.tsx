@@ -9,20 +9,17 @@ import { Separator } from "~/components/ui/separator";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
 } from "~/components/ui/breadcrumb";
 import BreadcrumbPageClient from "~/components/sidebar/breadcrumb-page-client";
 import SoundBar from "~/components/sound-bar";
 
 export const metadata: Metadata = {
-  title: "Home",
-  description: "Music Generator",
+  title: "Dashboard",
+  description: "Music Generator Dashboard",
 };
 
-export default function MainLayout({
+export default function DashboardLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
