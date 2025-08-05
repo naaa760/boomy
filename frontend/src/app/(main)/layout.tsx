@@ -29,12 +29,12 @@ export default function MainLayout({
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset className="flex h-screen flex-col">
-        <header className="bg-background sticky-top z-10 border-b px-4 py-2">
-          <div className="flex shrink-0 grow items-center gap-2">
-            <SidebarTrigger className="-ml-1" />
+        <header className="border-border/50 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-10 border-b backdrop-blur">
+          <div className="flex h-16 shrink-0 grow items-center gap-3 px-6">
+            <SidebarTrigger className="border-border/50 bg-background hover:bg-accent/50 -ml-1 h-9 w-9 rounded-lg border transition-colors duration-200" />
             <Separator
               orientation="vertical"
-              className="mr-2 data-[orientation=vertical]:h-4"
+              className="mr-2 h-6 data-[orientation=vertical]:h-6"
             />
             <Breadcrumb>
               <BreadcrumbList>
@@ -45,7 +45,7 @@ export default function MainLayout({
             </Breadcrumb>
           </div>
         </header>
-        <main className="flex-1 overflow-y-auto">{children}</main>
+        <main className="bg-background flex-1 overflow-y-auto">{children}</main>
         <SoundBar />
       </SidebarInset>
     </SidebarProvider>

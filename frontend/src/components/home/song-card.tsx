@@ -51,49 +51,62 @@ export function SongCard({ song }: { song: SongWithRelation }) {
   };
 
   return (
-    <div>
+    <div className="group">
       <div onClick={handlePlay} className="cursor-pointer">
-        <div className="group relative aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
+        <div className="group bg-muted/50 relative aspect-square w-full overflow-hidden rounded-xl transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-lg">
           {song.thumbnailUrl ? (
             <img
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
               src={song.thumbnailUrl}
+              alt={song.title}
             />
           ) : (
-            <div className="bg-muted flex h-full w-full items-center justify-center">
-              <Music className="text-muted-foreground h-12 w-12" />
+            <div className="bg-muted flex h-full w-full items-center justify-center rounded-xl">
+              <Music className="text-muted-foreground h-8 w-8" />
             </div>
           )}
 
-          {/* Loader */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity group-hover:opacity-100">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black/60 transition-transform group-hover:scale-105">
+          {/* Play overlay */}
+          <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-all duration-300 group-hover:opacity-100">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 shadow-lg transition-transform duration-200 group-hover:scale-110">
               {isLoading ? (
-                <Loader2 className="h-6 w-6 animate-spin text-white" />
+                <Loader2 className="text-foreground h-6 w-6 animate-spin" />
               ) : (
-                <Play className="h-6 w-6 fill-white text-white" />
+                <Play className="fill-foreground text-foreground h-6 w-6" />
               )}
             </div>
           </div>
         </div>
 
-        <h3 className="mt-2 truncate text-sm font-medium text-gray-900">
-          {song.title}
-        </h3>
+        <div className="mt-4 space-y-2">
+          <h3 className="font-caption text-foreground line-clamp-2 text-sm leading-tight font-medium">
+            {song.title}
+          </h3>
 
-        <p className="text-xs text-gray-500">{song.user.name}</p>
+          <p className="font-body text-muted-foreground text-xs">
+            {song.user.name}
+          </p>
 
-        <div className="mt-1 flex items-center justify-between text-xs text-gray-900">
-          <span>{song.listenCount} listens</span>
-          <button
-            onClick={handleLike}
-            className="flex cursor-pointer items-center gap-1"
-          >
-            <Heart
-              className={`h-4 w-4 ${isLiked ? "fill-red-500 text-red-500" : ""}`}
-            />
-            {likesCount} likes
-          </button>
+          <div className="flex items-center justify-between">
+            <span className="font-caption text-muted-foreground text-xs">
+              {song.listenCount} listens
+            </span>
+            <button
+              onClick={handleLike}
+              className="flex cursor-pointer items-center gap-1.5 transition-colors duration-200 hover:text-red-500"
+            >
+              <Heart
+                className={`h-4 w-4 transition-colors duration-200 ${
+                  isLiked
+                    ? "fill-red-500 text-red-500"
+                    : "text-muted-foreground"
+                }`}
+              />
+              <span className="font-caption text-muted-foreground text-xs">
+                {likesCount}
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ export default function SidebarMenuItems() {
   let items = [
     {
       title: "Home",
-      url: "/",
+      url: "/dashboard",
       icon: Home,
       active: false,
     },
@@ -31,10 +31,14 @@ export default function SidebarMenuItems() {
     <>
       {items.map((item) => (
         <SidebarMenuItem key={item.title}>
-          <SidebarMenuButton asChild isActive={item.active}>
-            <a href={item.url}>
-              <item.icon />
-              <span>{item.title}</span>
+          <SidebarMenuButton
+            asChild
+            isActive={item.active}
+            className="hover:bg-accent/50 data-[active=true]:bg-accent data-[active=true]:text-accent-foreground h-12 rounded-lg px-4 font-medium transition-all duration-200"
+          >
+            <a href={item.url} className="flex items-center gap-3">
+              <item.icon className="h-5 w-5" />
+              <span className="font-caption">{item.title}</span>
             </a>
           </SidebarMenuButton>
         </SidebarMenuItem>

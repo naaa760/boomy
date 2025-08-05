@@ -18,9 +18,13 @@ export async function Credits() {
   });
 
   return (
-    <>
-      <p className="font-semibold">{user.credits}</p>
-      <p className="text-muted-foreground">Credits</p>
-    </>
+    <div className="flex flex-col">
+      <span className="font-display text-foreground text-lg font-semibold">
+        {user.credits}
+      </span>
+      <span className="font-caption text-muted-foreground text-sm">
+        Credits
+      </span>
+    </div>
   );
 }

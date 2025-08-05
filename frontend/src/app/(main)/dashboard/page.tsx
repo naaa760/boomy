@@ -87,12 +87,14 @@ export default async function DashboardPage() {
     Object.keys(categorizedSongs).length === 0
   ) {
     return (
-      <div className="flex h-full flex-col items-center justify-center p-4 text-center">
-        <Music className="text-muted-foreground h-20 w-20" />
-        <h1 className="mt-4 text-2xl font-bold tracking-tight">
+      <div className="flex h-full flex-col items-center justify-center p-8 text-center">
+        <div className="bg-muted/50 rounded-full p-6">
+          <Music className="text-muted-foreground h-12 w-12" />
+        </div>
+        <h1 className="font-display text-foreground mt-6 text-2xl font-bold tracking-tight">
           No Music Here
         </h1>
-        <p className="text-muted-foreground mt-2">
+        <p className="font-body text-muted-foreground mt-3 max-w-md text-base">
           There are no published songs available right now. Check back later!
         </p>
       </div>
@@ -100,14 +102,23 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-3xl font-bold tracking-tight">Discover Music</h1>
+    <div className="p-8">
+      <div className="mb-8">
+        <h1 className="font-display text-foreground text-4xl font-bold tracking-tight">
+          Discover Music
+        </h1>
+        <p className="font-body text-muted-foreground mt-2 text-lg">
+          Explore trending tracks and discover new music
+        </p>
+      </div>
 
       {/* Trending songs */}
       {trendingSongs.length > 0 && (
-        <div className="mt-6">
-          <h2 className="text-xl font-semibold">Trending</h2>
-          <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <div className="mb-12">
+          <h2 className="font-display text-foreground mb-6 text-2xl font-semibold tracking-tight">
+            Trending
+          </h2>
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
             {trendingSongs.map((song) => (
               <SongCard key={song.id} song={song} />
             ))}
@@ -119,9 +130,11 @@ export default async function DashboardPage() {
       {Object.entries(categorizedSongs)
         .slice(0, 5)
         .map(([category, songs]) => (
-          <div key={category} className="mt-6">
-            <h2 className="text-xl font-semibold">{category}</h2>
-            <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+          <div key={category} className="mb-12">
+            <h2 className="font-display text-foreground mb-6 text-2xl font-semibold tracking-tight">
+              {category}
+            </h2>
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
               {songs.map((song) => (
                 <SongCard key={song.id} song={song} />
               ))}

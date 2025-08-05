@@ -19,32 +19,37 @@ import Upgrade from "./upgrade";
 
 export async function AppSidebar() {
   return (
-    <Sidebar>
-      <SidebarContent>
+    <Sidebar className="border-border/50 border-r">
+      <SidebarContent className="px-6 py-8">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-primary mt-4 mb-12 flex flex-col items-start justify-start px-2 text-3xl font-black tracking-widest uppercase">
-            <p>Music</p>
-            <p className="text-lg">Generator</p>
+          <SidebarGroupLabel className="mb-12 flex flex-col items-start justify-start">
+            <div className="font-display text-foreground text-2xl font-bold tracking-tight">
+              MUSIC
+            </div>
+            <div className="font-display text-muted-foreground text-lg font-medium tracking-wide">
+              GENERATOR
+            </div>
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="space-y-2">
               <SidebarMenuItems />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
-        <div className="mb-2 flex w-full items-center justify-center gap-1 text-xs">
+      <SidebarFooter className="border-border/50 border-t px-6 py-6">
+        <div className="mb-4 flex w-full items-center justify-between">
           <Credits />
           <Upgrade />
         </div>
         <UserButton
           variant="outline"
+          className="w-full"
           additionalLinks={[
             {
               label: "Customer Portal",
               href: "/customer-portal",
-              icon: <User />,
+              icon: <User className="h-4 w-4" />,
             },
           ]}
         />
