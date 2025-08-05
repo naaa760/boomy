@@ -33,10 +33,8 @@ export function Providers({ children }: { children: ReactNode }) {
       navigate={(url) => router.push(url)}
       replace={(url) => router.replace(url)}
       onSessionChange={() => {
-        // Clear router cache and trigger re-render
+        // Just refresh the router cache
         router.refresh();
-        // Force a page refresh to update navbar
-        window.location.reload();
       }}
       Link={Link}
     >

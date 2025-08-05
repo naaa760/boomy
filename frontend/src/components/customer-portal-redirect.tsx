@@ -2,14 +2,11 @@
 
 import { Loader2 } from "lucide-react";
 import { useEffect } from "react";
-import { authClient } from "~/lib/auth-client";
 
 export default function CustomerPortalRedirect() {
   useEffect(() => {
-    const portal = async () => {
-      await authClient.customer.portal();
-    };
-    void portal();
+    // Redirect to customer portal or show appropriate message
+    console.log("Customer portal redirect - functionality not implemented");
   }, []);
 
   return (
