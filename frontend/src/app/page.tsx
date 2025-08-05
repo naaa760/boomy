@@ -12,10 +12,10 @@ export default function LandingPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="mx-auto max-w-7xl px-4 pt-48 pb-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pt-32 pb-0 sm:px-6 lg:px-8">
         <div className="text-center">
           {/* Main Headline */}
-          <div className="mb-6 flex items-center justify-center gap-8">
+          <div className="mb-2 flex items-center justify-center gap-8">
             <h1
               className="text-center text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
               style={{
@@ -42,7 +42,7 @@ export default function LandingPage() {
 
           {/* Description */}
           <p
-            className="mx-auto mb-8 max-w-3xl text-center text-white/90 drop-shadow-[0_0_5px_rgba(255,255,255,0.2)]"
+            className="mx-auto mb-2 max-w-3xl text-center text-white/90 drop-shadow-[0_0_5px_rgba(255,255,255,0.2)]"
             style={{
               fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif',
               fontSize: "16px",
@@ -56,7 +56,7 @@ export default function LandingPage() {
           </p>
 
           {/* Call-to-Action Buttons */}
-          <div className="mb-8 flex items-center justify-center gap-x-4">
+          <div className="flex items-center justify-center gap-x-4">
             <Link href="/auth/sign-up">
               <Button
                 size="lg"
@@ -80,7 +80,7 @@ export default function LandingPage() {
             <img
               src="/horn.png"
               alt="Horn decoration"
-              className="h-72 w-72 object-contain opacity-80 md:h-80 md:w-80"
+              className="h-56 w-56 object-contain opacity-80 md:h-64 md:w-64"
             />
           </div>
         </div>
