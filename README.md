@@ -1,6 +1,7 @@
 # 🎵 Boomy - AI Music Generation SaaS
 
 A production-ready SaaS application that generates original music using state-of-the-art AI models. Create unique tracks from simple text descriptions, custom lyrics, or style prompts with our comprehensive music generation platform.
+<img width="1363" height="611" alt="image" src="https://github.com/user-attachments/assets/9c91975c-04a4-43bb-9989-71511b67917b" />
 
 ## ✨ Features
 
