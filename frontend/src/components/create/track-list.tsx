@@ -80,16 +80,16 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
   );
 
   return (
-    <div className="flex flex-1 flex-col overflow-y-scroll">
-      <div className="flex-1 p-6">
-        <div className="mb-4 flex items-center justify-between gap-4">
+    <div className="bg-background flex flex-1 flex-col overflow-y-scroll">
+      <div className="flex-1 px-8 py-8">
+        <div className="mb-8 flex items-center justify-between gap-4">
           <div className="relative max-w-md flex-1">
             <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
             <Input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search..."
-              className="pl-10"
+              placeholder="Search your tracks..."
+              className="font-body border-border/30 bg-background rounded-xl pl-10"
             />
           </div>
           <Button
@@ -97,18 +97,19 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
             variant="outline"
             size="sm"
             onClick={handleRefresh}
+            className="font-caption border-border/30 bg-background hover:bg-accent/30 h-9 rounded-lg"
           >
             {isRefreshing ? (
-              <Loader2 className="mr-2 animate-spin" />
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             ) : (
-              <RefreshCcw className="mr-2" />
+              <RefreshCcw className="mr-2 h-4 w-4" />
             )}
             Refresh
           </Button>
         </div>
 
         {/* Track list */}
-        <div className="space-y-2">
+        <div className="space-y-3">
           {filteredTracks.length > 0 ? (
             filteredTracks.map((track) => {
               switch (track.status) {
@@ -116,16 +117,16 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
                   return (
                     <div
                       key={track.id}
-                      className="flex cursor-not-allowed items-center gap-4 rounded-lg p-3"
+                      className="border-border/30 bg-background flex cursor-not-allowed items-center gap-4 rounded-xl border p-4"
                     >
-                      <div className="bg-destructive/10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-md">
-                        <XCircle className="text-destructive h-6 w-6" />
+                      <div className="bg-destructive/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg">
+                        <XCircle className="text-destructive h-5 w-5" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-destructive truncate text-sm font-medium">
+                        <h3 className="font-caption text-destructive truncate text-sm font-medium">
                           Generation failed
                         </h3>
-                        <p className="text-muted-foreground truncate text-xs">
+                        <p className="font-body text-muted-foreground truncate text-xs">
                           Please try creating the song again.
                         </p>
                       </div>
@@ -136,16 +137,16 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
                   return (
                     <div
                       key={track.id}
-                      className="flex cursor-not-allowed items-center gap-4 rounded-lg p-3"
+                      className="border-border/30 bg-background flex cursor-not-allowed items-center gap-4 rounded-xl border p-4"
                     >
-                      <div className="bg-destructive/10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-md">
-                        <XCircle className="text-destructive h-6 w-6" />
+                      <div className="bg-destructive/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg">
+                        <XCircle className="text-destructive h-5 w-5" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-destructive truncate text-sm font-medium">
+                        <h3 className="font-caption text-destructive truncate text-sm font-medium">
                           Not enough credits
                         </h3>
-                        <p className="text-muted-foreground truncate text-xs">
+                        <p className="font-body text-muted-foreground truncate text-xs">
                           Please purchase more credits to generate this song.
                         </p>
                       </div>
@@ -157,16 +158,16 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
                   return (
                     <div
                       key={track.id}
-                      className="flex cursor-not-allowed items-center gap-4 rounded-lg p-3"
+                      className="border-border/30 bg-background flex cursor-not-allowed items-center gap-4 rounded-xl border p-4"
                     >
-                      <div className="bg-muted flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-md">
-                        <Loader2 className="text-muted-foreground h-6 w-6 animate-spin" />
+                      <div className="bg-muted flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg">
+                        <Loader2 className="text-muted-foreground h-5 w-5 animate-spin" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-muted-foreground truncate text-sm font-medium">
+                        <h3 className="font-caption text-muted-foreground truncate text-sm font-medium">
                           Processing song...
                         </h3>
-                        <p className="text-muted-foreground truncate text-xs">
+                        <p className="font-body text-muted-foreground truncate text-xs">
                           Refresh to check the status.
                         </p>
                       </div>
@@ -177,22 +178,23 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
                   return (
                     <div
                       key={track.id}
-                      className="hover:bg-muted/50 flex cursor-pointer items-center gap-4 rounded-lg p-3 transition-colors"
+                      className="group border-border/30 bg-background hover:border-border hover:bg-accent/30 flex cursor-pointer items-center gap-4 rounded-xl border p-4 transition-all duration-200"
                       onClick={() => handleTrackSelect(track)}
                     >
                       {/* Thumbnail */}
-                      <div className="group relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-md">
+                      <div className="group relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-lg">
                         {track.thumbnailUrl ? (
                           <img
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
                             src={track.thumbnailUrl}
+                            alt={track.title ?? "Track"}
                           />
                         ) : (
-                          <div className="bg-muted flex h-full w-full items-center justify-center">
-                            <Music className="text-muted-foreground h-6 w-6" />
+                          <div className="bg-muted flex h-full w-full items-center justify-center rounded-lg">
+                            <Music className="text-muted-foreground h-5 w-5" />
                           </div>
                         )}
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-all duration-200 group-hover:opacity-100">
                           {loadingTrackId === track.id ? (
                             <Loader2 className="animate-spin text-white" />
                           ) : (
@@ -204,14 +206,19 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
                       {/* Track info */}
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2">
-                          <h3 className="trucate text-sm font-medium">
+                          <h3 className="font-caption text-foreground truncate text-sm font-medium">
                             {track.title}
                           </h3>
                           {track.instrumental && (
-                            <Badge variant="outline">Instrumental</Badge>
+                            <Badge
+                              variant="outline"
+                              className="font-caption text-xs"
+                            >
+                              Instrumental
+                            </Badge>
                           )}
                         </div>
-                        <p className="text-muted-foreground truncate text-xs">
+                        <p className="font-body text-muted-foreground truncate text-xs">
                           {track.prompt}
                         </p>
                       </div>
@@ -228,14 +235,20 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
                           }}
                           variant="outline"
                           size="sm"
-                          className={`cursor-pointer ${track.published ? "border-red-200" : ""}`}
+                          className={`font-caption border-border/30 bg-background hover:bg-accent/30 cursor-pointer rounded-lg text-xs ${
+                            track.published ? "border-red-200 text-red-600" : ""
+                          }`}
                         >
                           {track.published ? "Unpublish" : "Publish"}
                         </Button>
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="icon">
-                              <MoreHorizontal />
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="hover:bg-accent/30 h-8 w-8 rounded-lg"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end" className="w-40">
@@ -245,16 +258,18 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
                                 const playUrl = await getPlayUrl(track.id);
                                 window.open(playUrl, "_blank");
                               }}
+                              className="font-caption"
                             >
-                              <Download className="mr-2" /> Download
+                              <Download className="mr-2 h-4 w-4" /> Download
                             </DropdownMenuItem>
                             <DropdownMenuItem
                               onClick={async (e) => {
                                 e.stopPropagation();
                                 setTrackToRename(track);
                               }}
+                              className="font-caption"
                             >
-                              <Pencil className="mr-2" /> Rename
+                              <Pencil className="mr-2 h-4 w-4" /> Rename
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
@@ -265,9 +280,13 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
             })
           ) : (
             <div className="flex flex-col items-center justify-center pt-20 text-center">
-              <Music className="text-muted-foreground h-10 w-10" />
-              <h2 className="mt-4 text-lg font-semibold">No Music Yet</h2>
-              <p className="text-muted-foreground mt-1 text-sm">
+              <div className="bg-muted/30 rounded-full p-6">
+                <Music className="text-muted-foreground h-8 w-8" />
+              </div>
+              <h2 className="font-display text-foreground mt-6 text-lg font-semibold tracking-tight">
+                No Music Yet
+              </h2>
+              <p className="font-body text-muted-foreground mt-2 max-w-sm text-sm">
                 {searchQuery
                   ? "No tracks match your search."
                   : "Create your first song to get started."}

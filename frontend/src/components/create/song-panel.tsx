@@ -117,40 +117,60 @@ export function SongPanel() {
   };
 
   return (
-    <div className="bg-muted/30 flex w-full flex-col border-r lg:w-80">
-      <div className="flex-1 overflow-y-auto p-4">
+    <div className="border-border/30 bg-background flex w-full flex-col border-r lg:w-80">
+      <div className="border-border/30 bg-background border-b px-8 py-8">
+        <div>
+          <h1 className="font-display text-foreground text-2xl font-bold tracking-tight">
+            Create Music
+          </h1>
+          <p className="font-body text-muted-foreground mt-1 text-sm">
+            Generate unique tracks with AI
+          </p>
+        </div>
+      </div>
+
+      <div className="flex-1 overflow-y-auto px-8 py-8">
         <Tabs
           value={mode}
           onValueChange={(value) => setMode(value as "simple" | "custom")}
+          className="space-y-8"
         >
-          <TabsList className="w-full">
-            <TabsTrigger value="simple">Simple</TabsTrigger>
-            <TabsTrigger value="custom">Custom</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="simple" className="font-caption text-sm">
+              Simple
+            </TabsTrigger>
+            <TabsTrigger value="custom" className="font-caption text-sm">
+              Custom
+            </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="simple" className="mt-6 space-y-6">
-            <div className="flex flex-col gap-3">
-              <label className="text-sm font-medium">Describe your song</label>
+          <TabsContent value="simple" className="space-y-8">
+            <div className="space-y-4">
+              <label className="font-caption text-foreground text-sm font-medium">
+                Describe your song
+              </label>
               <Textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="A dreamy lofi hip hop song, perfect for studying of relaxing"
-                className="min-h-[120px] resize-none"
+                placeholder="A dreamy lofi hip hop song, perfect for studying or relaxing"
+                className="font-body border-border/30 bg-background min-h-[100px] resize-none rounded-xl"
               />
             </div>
 
-            {/* Lyrics button an instrumentals toggle */}
             <div className="flex items-center justify-between">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setMode("custom")}
+                className="font-caption border-border/30 bg-background hover:bg-accent/30 h-8 rounded-lg text-xs"
               >
-                <Plus className="mr-2" />
-                Lyrics
+                <Plus className="mr-2 h-3 w-3" />
+                Add Lyrics
               </Button>
-              <div className="flex items-center gap-2">
-                <label className="text-sm font-medium">Instrumental</label>
+              <div className="flex items-center gap-3">
+                <label className="font-caption text-foreground text-sm font-medium">
+                  Instrumental
+                </label>
                 <Switch
                   checked={instrumental}
                   onCheckedChange={setInstrumental}
@@ -158,19 +178,21 @@ export function SongPanel() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-3">
-              <label className="text-sm font-medium">Inspiration</label>
+            <div className="space-y-4">
+              <label className="font-caption text-foreground text-sm font-medium">
+                Inspiration
+              </label>
               <div className="w-full overflow-x-auto whitespace-nowrap">
                 <div className="flex gap-2 pb-2">
                   {inspirationTags.map((tag) => (
                     <Button
                       variant="outline"
                       size="sm"
-                      className="h-7 flex-shrink-0 bg-transparent text-xs"
+                      className="font-caption border-border/30 bg-background hover:bg-accent/30 h-7 flex-shrink-0 rounded-lg text-xs"
                       key={tag}
                       onClick={() => handleInspirationTagClick(tag)}
                     >
-                      <Plus className="mr-1" />
+                      <Plus className="mr-1 h-3 w-3" />
                       {tag}
                     </Button>
                   ))}
@@ -179,11 +201,13 @@ export function SongPanel() {
             </div>
           </TabsContent>
 
-          <TabsContent value="custom" className="mt-6 space-y-6">
-            <div className="flex flex-col gap-3">
+          <TabsContent value="custom" className="space-y-8">
+            <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium">Lyrics</label>
-                <div className="flex items-center gap-1">
+                <label className="font-caption text-foreground text-sm font-medium">
+                  Lyrics
+                </label>
+                <div className="border-border/30 bg-background flex items-center gap-1 rounded-lg border p-1">
                   <Button
                     variant={lyricsMode === "auto" ? "secondary" : "ghost"}
                     onClick={() => {
@@ -191,7 +215,7 @@ export function SongPanel() {
                       setLyrics("");
                     }}
                     size="sm"
-                    className="h-7 text-xs"
+                    className="font-caption h-6 rounded-md text-xs"
                   >
                     Auto
                   </Button>
@@ -202,7 +226,7 @@ export function SongPanel() {
                       setLyrics("");
                     }}
                     size="sm"
-                    className="h-7 text-xs"
+                    className="font-caption h-6 rounded-md text-xs"
                   >
                     Write
                   </Button>
@@ -212,30 +236,33 @@ export function SongPanel() {
                 placeholder={
                   lyricsMode === "write"
                     ? "Add your own lyrics here"
-                    : "Describe you lyrics, e.g., a sad song about lost love"
+                    : "Describe your lyrics, e.g., a sad song about lost love"
                 }
                 value={lyrics}
                 onChange={(e) => setLyrics(e.target.value)}
-                className="min-h-[100px] resize-none"
+                className="font-body border-border/30 bg-background min-h-[80px] resize-none rounded-xl"
               />
             </div>
 
             <div className="flex items-center justify-between">
-              <label className="text-sm font-medium">Instrumental</label>
+              <label className="font-caption text-foreground text-sm font-medium">
+                Instrumental
+              </label>
               <Switch
                 checked={instrumental}
                 onCheckedChange={setInstrumental}
               />
             </div>
 
-            {/* Styles */}
-            <div className="flex flex-col gap-3">
-              <label className="text-sm font-medium">Styles</label>
+            <div className="space-y-4">
+              <label className="font-caption text-foreground text-sm font-medium">
+                Styles
+              </label>
               <Textarea
                 placeholder="Enter style tags"
                 value={styleInput}
                 onChange={(e) => setStyleInput(e.target.value)}
-                className="min-h-[60px] resize-none"
+                className="font-body border-border/30 bg-background min-h-[50px] resize-none rounded-xl"
               />
               <div className="w-full overflow-x-auto whitespace-nowrap">
                 <div className="flex gap-2 pb-2">
@@ -243,7 +270,7 @@ export function SongPanel() {
                     <Badge
                       variant="secondary"
                       key={tag}
-                      className="hover:bg-secondary/50 flex-shrink-0 cursor-pointer text-xs"
+                      className="font-caption hover:bg-secondary/30 flex-shrink-0 cursor-pointer rounded-md text-xs transition-colors duration-200"
                       onClick={() => handleStyleInputTagClick(tag)}
                     >
                       {tag}
@@ -256,14 +283,18 @@ export function SongPanel() {
         </Tabs>
       </div>
 
-      <div className="border-t p-4">
+      <div className="border-border/30 bg-background border-t px-8 py-6">
         <Button
           onClick={handleCreate}
           disabled={loading}
-          className="w-full cursor-pointer bg-gradient-to-r from-orange-500 to-pink-500 font-medium text-white hover:from-orange-600 hover:to-pink-600"
+          className="font-caption bg-foreground text-background hover:bg-foreground/90 w-full rounded-xl font-medium shadow-sm transition-all duration-200 hover:shadow-md"
         >
-          {loading ? <Loader2 className="animate-spin" /> : <Music />}
-          {loading ? "Creating..." : "Create"}
+          {loading ? (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Music className="mr-2 h-4 w-4" />
+          )}
+          {loading ? "Creating..." : "Create Song"}
         </Button>
       </div>
     </div>

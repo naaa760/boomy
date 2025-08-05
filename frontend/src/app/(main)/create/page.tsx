@@ -20,8 +20,15 @@ export default async function Page() {
       <SongPanel />
       <Suspense
         fallback={
-          <div className="flex h-full w-full items-center justify-center">
-            <Loader2 className="h-8 w-8 animate-spin" />
+          <div className="bg-background flex h-full w-full items-center justify-center">
+            <div className="flex flex-col items-center gap-4">
+              <div className="bg-muted/50 rounded-full p-4">
+                <Loader2 className="text-muted-foreground h-8 w-8 animate-spin" />
+              </div>
+              <p className="font-body text-muted-foreground text-sm">
+                Loading your tracks...
+              </p>
+            </div>
           </div>
         }
       >
